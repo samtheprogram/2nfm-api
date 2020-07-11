@@ -9,6 +9,8 @@ var httpServer = require('http');
 const ioServer = require('socket.io');
 const RTCMultiConnectionServer = require('./node_scripts/index.js');
 
+const colors = require('colors');
+
 var PORT = 9001;
 var isUseHTTPs = false;
 
@@ -17,7 +19,6 @@ const jsonPath = {
     logs: 'logs.json'
 };
 
-const BASH_COLORS_HELPER = RTCMultiConnectionServer.BASH_COLORS_HELPER;
 const getValuesFromConfigJson = RTCMultiConnectionServer.getValuesFromConfigJson;
 
 var config = getValuesFromConfigJson(jsonPath);
@@ -59,21 +60,21 @@ if (isUseHTTPs) {
     var pfx = false;
 
     if (!fs.existsSync(config.sslKey)) {
-        console.log(BASH_COLORS_HELPER.getRedFG(), 'sslKey:\t ' + config.sslKey + ' does not exist.');
+        console.log(colors.red('sslKey:\t ' + config.sslKey + ' does not exist.'));
     } else {
         pfx = config.sslKey.indexOf('.pfx') !== -1;
         options.key = fs.readFileSync(config.sslKey);
     }
 
     if (!fs.existsSync(config.sslCert)) {
-        console.log(BASH_COLORS_HELPER.getRedFG(), 'sslCert:\t ' + config.sslCert + ' does not exist.');
+        console.log(colors.red('sslCert:\t ' + config.sslCert + ' does not exist.'));
     } else {
         options.cert = fs.readFileSync(config.sslCert);
     }
 
     if (config.sslCabundle) {
         if (!fs.existsSync(config.sslCabundle)) {
-            console.log(BASH_COLORS_HELPER.getRedFG(), 'sslCabundle:\t ' + config.sslCabundle + ' does not exist.');
+            console.log(colors.red('sslCabundle:\t ' + config.sslCabundle + ' does not exist.'));
         }
 
         options.ca = fs.readFileSync(config.sslCabundle);

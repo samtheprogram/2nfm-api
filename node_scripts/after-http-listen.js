@@ -4,7 +4,7 @@
 
 // pushLogs is used to write error logs into logs.json
 const pushLogs = require('./pushLogs.js');
-const BASH_COLORS_HELPER = require('./BASH_COLORS_HELPER.js');
+const colors = require('colors');
 
 module.exports = exports = function(httpServer, config) {
     try {
@@ -19,19 +19,19 @@ module.exports = exports = function(httpServer, config) {
         console.log('\n');
 
         console.log('Socket.io is listening at:');
-        console.log(BASH_COLORS_HELPER.getGreenFG(), '\t' + domainURL);
+        console.log(colors.green('\t' + domainURL));
 
         if (!config.isUseHTTPs) {
             console.log('You can use --ssl to enable HTTPs:');
-            console.log(BASH_COLORS_HELPER.getYellowFG(), '\t' + 'node server --ssl');
+            console.log(colors.yellow('\t' + 'node server --ssl'));
         }
 
         console.log('Your web-browser (HTML file) MUST set this line:');
-        console.log(BASH_COLORS_HELPER.getGreenFG(), '\tconnection.socketURL = "' + domainURL + '";');
+        console.log(colors.green('\tconnection.socketURL = "' + domainURL + '";'));
 
         if (addr.address != 'localhost' && !config.isUseHTTPs) {
-            console.log(BASH_COLORS_HELPER.getRedBG(), 'Warning:');
-            console.log(BASH_COLORS_HELPER.getRedBG(), 'Please run on HTTPs to make sure audio,video and screen demos can work on Google Chrome as well.');
+            console.log(colors.bgRed('Warning:'));
+            console.log(colors.bgRed('Please run on HTTPs to make sure audio,video and screen demos can work on Google Chrome as well.'));
         }
 
         if (config.enableAdmin === true) {
@@ -40,7 +40,7 @@ module.exports = exports = function(httpServer, config) {
             console.log('\tAdmin page password: ' + config.adminPassword);
         }
 
-        console.log('For more help: ', BASH_COLORS_HELPER.getYellowFG('node server.js --help'));
+        console.log('For more help: ', colors.yellow('node server.js --help'));
         console.log('\n');
     } catch (e) {
         pushLogs(config, 'app.listen.callback', e);

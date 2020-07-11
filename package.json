@@ -10,6 +10,7 @@
   },
   "main": "./node_scripts/index.js",
   "dependencies": {
+    "colors": "^1.4.0",
     "socket.io": "^2.3.0"
   },
   "license": "BSD-3-Clause"
