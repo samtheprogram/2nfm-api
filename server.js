@@ -7,7 +7,7 @@ const url = require('url');
 var httpServer = require('http');
 
 const ioServer = require('socket.io');
-const RTCMultiConnectionServer = require('./node_scripts/index.js');
+const RTCMultiConnectionServer = require('./src/index.js');
 
 const colors = require('colors');
 
