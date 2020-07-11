@@ -19,10 +19,8 @@ const jsonPath = {
 
 const BASH_COLORS_HELPER = RTCMultiConnectionServer.BASH_COLORS_HELPER;
 const getValuesFromConfigJson = RTCMultiConnectionServer.getValuesFromConfigJson;
-const getBashParameters = RTCMultiConnectionServer.getBashParameters;
 
 var config = getValuesFromConfigJson(jsonPath);
-config = getBashParameters(config, BASH_COLORS_HELPER);
 
 // if user didn't modifed "PORT" object
 // then read value from "config.json"
@@ -37,7 +35,6 @@ function serverHandler(request, response) {
     // to make sure we always get valid info from json file
     // even if external codes are overriding it
     config = getValuesFromConfigJson(jsonPath);
-    config = getBashParameters(config, BASH_COLORS_HELPER);
 
     response.writeHead(200, {
         'Content-Type': 'text/plain'
