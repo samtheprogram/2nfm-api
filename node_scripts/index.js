@@ -1,5 +1,4 @@
 module.exports = {
-    resolveURL: require('./resolveURL.js'),
     getValuesFromConfigJson: require('./get-values-from-config-json.js'),
     getJsonFile: require('./getJsonFile.js'),
     pushLogs: require('./pushLogs.js'),
