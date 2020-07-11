@@ -1,59 +1,17 @@
-<a href="https://www.rtcmulticonnection.org/"><img src="https://i.imgur.com/MFfRBSM.png" /></a>
+# 2n.fm API
 
-## RTCMultiConnection Socket.io Server
+This is the 2n.fm signaling server, used to coordinate connections between peers.
 
-[![npm](https://img.shields.io/npm/v/rtcmulticonnection-server.svg)](https://npmjs.org/package/rtcmulticonnection-server) [![downloads](https://img.shields.io/npm/dm/rtcmulticonnection-server.svg)](https://npmjs.org/package/rtcmulticonnection-server)
-
-> Since version `1.3.1`: now `rtcmulticonnection-server` does not creates any HTTP server.
-> 
-> Now you need to use this: `require('rtcmulticonnection-server').addSocket(socket)` where `socket` is your socket.io connection object.
-> 
-> It means  that now you can integrate `rtcmulticonnection-server` inside any socket.io application or expressjsj/angular frameworks.
-
-```sh
-npm install rtcmulticonnection-server
-
-# either
-node server.js --help
-
-# or
-require('rtcmulticonnection-server').addSocket(socket);
-```
-
-**Installation Guide:**
-
-* https://github.com/muaz-khan/RTCMultiConnection-Server/wiki
-
-## Free socket.io servers
-
-```javascript
-connectin.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
-connectin.socketURL = 'https://webrtcweb.com:9002/';
-```
+To get started, just clone and run `npm install && npm start`. If you're looking to host this properly, be sure to configure HTTPS certificates.
 
 ## `config.json`
 
 * https://github.com/muaz-khan/RTCMultiConnection-Server/wiki/config.json
 
-## Integrate inside nodejs applications
+## Node.js App Integration
 
-```javascript
-const ioServer = require('socket.io');
-const RTCMultiConnectionServer = require('rtcmulticonnection-server');
+This project is based on RTCMultiConnection-Server; for the time being, you should be able to use the same [instructions](https://github.com/muaz-khan/RTCMultiConnection-Server/wiki/Integrate-inside-nodejs-applications), except that CLI arguments are no longer supported.
 
-ioServer(httpApp).on('connection', function(socket) {
-    RTCMultiConnectionServer.addSocket(socket);
-});
-```
+## License & Attributions
 
-For more information:
-
-* https://github.com/muaz-khan/RTCMultiConnection-Server/wiki/Integrate-inside-nodejs-applications
-
-## Demos
-
-* https://rtcmulticonnection.herokuapp.com/demos/
-
-## License
-
-[RTCMultiConnection Socket.io Server](https://github.com/muaz-khan/RTCMultiConnection-Server) is released under [MIT licence](https://github.com/muaz-khan/RTCMultiConnection/blob/master/LICENSE.md) . Copyright (c) [Muaz Khan](https://MuazKhan.com/).
+See `LICENSE` and `NOTICE`.
