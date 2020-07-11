@@ -1,9 +1,9 @@
 FROM node
 
-RUN git clone https://github.com/muaz-khan/RTCMultiConnection-Server \
-    && cd RTCMultiConnection-Server \
+RUN git clone https://github.com/samtheprogram/2nfm-api \
+    && cd 2nfm-api \
     && npm install
 
-CMD (cd RTCMultiConnection-Server && node server.js)
+CMD (cd 2nfm-api && npm start)
 
 EXPOSE 9001
